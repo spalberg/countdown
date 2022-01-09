@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Countdown
 
-## Getting Started
+## Features
 
-First, run the development server:
+- Display a countdown/countup to/from a target epoch
+  - Shared via URL, either
+    - Server-persisted and editable
+    - Self-contained in URL
+- Create a countdown/countup via a wizard
+  - Switch between mode (countdown/countup)
+  - Set target epoch
+  - Select theme template
+  - Select target action (countdown: what happens when 0, countup: what happens when the countdown is not started yet)
+  - Preview
+  - Create self-contained link
+  - Create persisted link
+    - One link to share
+    - One link to edit
+- Light mode and dark mode (default by system, manual switch possible)
+- Theme templates
+  - Default
+  - New Year
+  - Christmas
+  - Happy Birthday
+- Quick-Creators
+  - Like "in 10 Minutes" with sensible defaults
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Countdown / Countup
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Viewmodes
+- Full
+- Weeks
+- Days
+- Hours
+- Minutes
+- Seconds
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Switch between them by clicking.
+Only show 
+### Full
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Pad every unit except the greatest
+  - seconds: 2
+  - minutes: 2
+  - hours: 2
+  - days: 2
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+----------------------------------------------------------------
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Next (user triggered)
+Hide view -> Maybe update current index
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+views = full, seconds, minutes, hours, days, weeks
+viewLen = 6
+viewHiddenLen = 0
+index = 0
+shows = views[(index + viewLen - viewHiddenLen) % viewLen] = full
+
+-> next
+index <= (index + viewLen - 1) % viewLen 
+index = 5
+shows = week
+
+-> hide view weeks (check total seconds smaller UNITS)
+viewLen = 5
+viewHiddenLen = 1
+shows = views[(5 + 5 - 1) % 5] = views[4] = days
+
+-> next
+
