@@ -1,5 +1,4 @@
-import React from 'react';
-import { ThemeProvider } from '../theme';
+import { theme } from '../theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -9,12 +8,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  chakra: {
+    theme,
+  },
 };
-
-export const decorators = [
-  (Story) => (
-    <ThemeProvider>
-      <Story />
-    </ThemeProvider>
-  ),
-];

@@ -5,7 +5,11 @@ module.exports = {
   features: {
     previewCsfV3: true,
   },
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chakra-ui/storybook-addon',
+  ],
   framework: '@storybook/react',
   core: {
     builder: 'webpack5',
