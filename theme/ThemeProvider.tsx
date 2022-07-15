@@ -1,7 +1,11 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { FC } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { theme } from './theme';
 
-export const ThemeProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+export const ThemeProvider: FC<Props> = ({ children }) => {
   return <ChakraProvider theme={theme}>{children}</ChakraProvider>;
 };

@@ -7,7 +7,7 @@ type TimeUnitProps = {
 };
 
 export function createView(label: string): FC<TimeUnitProps> {
-  return ({ amount, padLeft = 0 }) => {
+  const view: FC<TimeUnitProps> = ({ amount, padLeft = 0 }) => {
     return (
       <Flex direction="column" fontFamily="mono">
         <Text as="span" fontSize="7xl">
@@ -19,4 +19,6 @@ export function createView(label: string): FC<TimeUnitProps> {
       </Flex>
     );
   };
+  view.displayName = label;
+  return view;
 }

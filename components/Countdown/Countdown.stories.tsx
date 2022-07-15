@@ -7,6 +7,6 @@ export default { component: Countdown } as Meta;
 
 type Story = StoryObj<ComponentProps<typeof Countdown>>;
 
-export const in3Minutes: Story = {
+export const In3Minutes: Story = {
   args: { unixTimestampTarget: getUnixTime(addMinutes(new Date(), 3)) },
 };

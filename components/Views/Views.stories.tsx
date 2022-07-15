@@ -1,48 +1,47 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { type ComponentMeta, type ComponentStoryObj } from '@storybook/react';
 import { MIN, HOUR, DAY, WEEK } from 'utils';
 import { Views } from './Views';
 
-export default { component: Views } as Meta;
+export default { component: Views } as ComponentMeta<typeof Views>;
 
-type Story = StoryObj<ComponentProps<typeof Views>>;
+type Story = ComponentStoryObj<typeof Views>;
 
-export const weekAtFullView: Story = {
+export const WeekAtFullView: Story = {
   args: { totalSeconds: WEEK },
 };
 
-export const dayAtFullView: Story = {
+export const DayAtFullView: Story = {
   args: { totalSeconds: DAY },
 };
 
-export const hourAtFullView: Story = {
+export const HourAtFullView: Story = {
   args: { totalSeconds: HOUR },
 };
 
-export const minuteAtFullView: Story = {
+export const MinuteAtFullView: Story = {
   args: { totalSeconds: MIN },
 };
 
-export const secondAtFullView: Story = {
+export const SecondAtFullView: Story = {
   args: { totalSeconds: 1 },
 };
 
-export const weekAtWeeksView: Story = {
+export const WeekAtWeeksView: Story = {
   args: { totalSeconds: WEEK, initialActiveView: 'weeks' },
 };
 
-export const dayAtDaysView: Story = {
+export const DayAtDaysView: Story = {
   args: { totalSeconds: DAY, initialActiveView: 'days' },
 };
 
-export const hourAtHoursView: Story = {
+export const HourAtHoursView: Story = {
   args: { totalSeconds: HOUR, initialActiveView: 'hours' },
 };
 
-export const minuteAtMinutesView: Story = {
+export const MinuteAtMinutesView: Story = {
   args: { totalSeconds: MIN, initialActiveView: 'minutes' },
 };
 
-export const secondAtSecondsView: Story = {
+export const SecondAtSecondsView: Story = {
   args: { totalSeconds: 1, initialActiveView: 'seconds' },
 };
