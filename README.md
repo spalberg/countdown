@@ -1,5 +1,7 @@
 # Countdown
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spalberg/countdown)
+
 ## Features
 
 - Display a countdown/countup to/from a target epoch
