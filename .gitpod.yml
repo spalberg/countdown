@@ -1,10 +1,28 @@
 tasks:
-  - name: dev server
-    init: npm install
-    command: npm run dev
-  - name: storybook
-    init: npm install
-    command: npm run storybook
+  - init: npm install
+    command: |
+      gp sync-done npm-install
+  - command: |
+      gp sync-await npm-install
+      npm run dev
+  - command: |
+      gp sync-await npm-install
+      npm run storybook
+
 github:
   prebuilds:
     addBadge: true
+
+ports:
+  - port: 3000
+    onOpen: ignore
+  - port: 6006
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - EditorConfig.EditorConfig
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - esbenp.prettier-vscode
+    - Prisma.prisma

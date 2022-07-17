@@ -1,0 +1,17 @@
+{
+  "create react component": {
+    "prefix": ["component", "react", "functional component", "fc"],
+    "body": [
+      "import { type FC } from 'react';",
+      "",
+      "type Props = {",
+      "  ${2}",
+      "};",
+      "",
+      "export const ${1:Component}: FC<Props> = ({ }) => {",
+      "  $0",
+      "  return null;",
+      "};"
+    ]
+  }
+}
