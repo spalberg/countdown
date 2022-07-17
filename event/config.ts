@@ -1,11 +1,11 @@
-import { Background } from './background';
+import { BackgroundConfig } from './background';
 
-type EventCountdown = never;
+type EventCountdown = null;
 
-type EventOnTarget = never;
+type EventOnTarget = null;
 
 export type Config = {
-  background: Background;
+  background: BackgroundConfig;
   countdown: EventCountdown;
   onTarget: EventOnTarget;
 };

@@ -1,26 +1,38 @@
-type BackgroundBase<Type extends string, Config extends {}> = {
+type BackgroundConfigBase<Type extends string, Config extends {}> = {
   type: Type;
 } & Config;
 
-type ColorBackground = BackgroundBase<'color', { color: string }>;
-
-type GradientBackground = BackgroundBase<'gradient', { gradient: string }>;
-
-type ImageBackground = BackgroundBase<'image', { image: string }>;
-
-type VideoBackground = BackgroundBase<'video', { video: string }>;
-
-type SnowBackground = BackgroundBase<
-  'snow',
-  { snowColor: string; background: Background } // TODO maybe only a subset of backgrounds
+export type ColorBackgroundConfig = BackgroundConfigBase<
+  'color',
+  { color: string }
 >;
 
-type FireworksBackground = BackgroundBase<'fireworks', {}>; // TODO config for fireworks
+export type GradientBackgroundConfig = BackgroundConfigBase<
+  'gradient',
+  { gradient: string }
+>;
 
-export type Background =
-  | ColorBackground
-  | GradientBackground
-  | ImageBackground
-  | VideoBackground
-  | SnowBackground
-  | FireworksBackground;
+export type ImageBackgroundConfig = BackgroundConfigBase<
+  'image',
+  { image: string }
+>;
+
+export type VideoBackgroundConfig = BackgroundConfigBase<
+  'video',
+  { video: string }
+>;
+
+export type SnowfallBackgroundConfig = BackgroundConfigBase<
+  'snowfall',
+  {} // TODO config for snowfall, config for backgrounds, subset?
+>;
+
+export type FireworksBackgroundConfig = BackgroundConfigBase<'fireworks', {}>; // TODO config for fireworks, config for backgrounds, subset?
+
+export type BackgroundConfig =
+  | ColorBackgroundConfig
+  | GradientBackgroundConfig
+  | ImageBackgroundConfig
+  | VideoBackgroundConfig
+  | SnowfallBackgroundConfig
+  | FireworksBackgroundConfig;
