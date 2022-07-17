@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useSecondsUntil } from 'hooks';
-import { Views } from 'components/Views';
+import { Views } from 'components/Countdown/widgets';
 import { Center } from '@chakra-ui/react';
 
 type Props = { unixTimestampTarget: number };

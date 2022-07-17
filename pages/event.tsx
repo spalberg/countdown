@@ -7,7 +7,7 @@ type Props = {
   unixTimestampTarget: number;
 };
 
-const Home: NextPage<Props> = ({ unixTimestampTarget }) => {
+const Event: NextPage<Props> = ({ unixTimestampTarget }) => {
   return (
     <main>
       <Countdown unixTimestampTarget={unixTimestampTarget} />
@@ -20,9 +20,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => {
   return {
     props: {
-      unixTimestampTarget: getUnixTime(new Date()) + 180,
+      unixTimestampTarget: getUnixTime(new Date()) + 18000,
     },
   };
 };
 
-export default Home;
+export default Event;

@@ -15,9 +15,11 @@ github:
 
 ports:
   - port: 3000
-    onOpen: ignore
+    name: next dev
+    onOpen: notify
   - port: 6006
-    onOpen: ignore
+    name: storybook
+    onOpen: notify
 
 vscode:
   extensions:
