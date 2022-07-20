@@ -11,10 +11,17 @@ export const In3Minutes: Story = {
     unixTimestampTarget: getUnixTime(addMinutes(new Date(), 3)),
     config: {
       background: {
-        type: 'snowfall',
+        type: 'color',
+        color: '#ffd54f',
       },
-      countdown: null,
-      onTarget: null,
+      countdown: {
+        type: 'default',
+        color: '#333',
+      },
+      onTarget: {
+        type: 'text',
+        text: 'Liftoff',
+      },
     },
   },
 };

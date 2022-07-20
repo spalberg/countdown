@@ -1,21 +1,14 @@
-import { Center } from '@chakra-ui/react';
+import { Content } from 'components/Content';
 import { Views } from 'components/Countdown/widgets';
-import { useSecondsUntil } from 'hooks';
+import { CountdownConfig } from 'event/countdown';
 import { FC } from 'react';
-import { contentZIndex } from 'theme/variables';
 
-type Props = { unixTimestampTarget: number };
+type Props = { secondsUntil: number; config: CountdownConfig };
 
-export const Countdown: FC<Props> = ({ unixTimestampTarget }) => {
-  const secondsUntil = useSecondsUntil(unixTimestampTarget);
+export const Countdown: FC<Props> = ({ secondsUntil, config: { color } }) => {
   return (
-    <Center
-      position={'relative'}
-      minH={'100vh'}
-      zIndex={`var(${contentZIndex})`}
-      userSelect={'none'}
-    >
+    <Content userSelect={'none'} color={color}>
       <Views totalSeconds={secondsUntil} />
-    </Center>
+    </Content>
   );
 };

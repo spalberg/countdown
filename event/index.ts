@@ -1,2 +1,2 @@
 export { type BackgroundConfig as Background } from './background';
-export { type Config } from './config';
+export { type EventConfig } from './event';
