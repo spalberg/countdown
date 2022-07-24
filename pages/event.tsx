@@ -1,20 +1,18 @@
 import { Event as EventComponent } from 'components/Event';
 import { getUnixTime } from 'date-fns';
-import { EventConfig } from 'event';
+import { EventSchema } from 'event';
+import { mellowYellow } from 'event/presets';
 import { GetServerSideProps, NextPage } from 'next';
+import { z } from 'zod';
 
 type Props = {
-  unixTimestampTarget: number;
-  config: EventConfig;
+  config: z.infer<typeof EventSchema>;
 };
 
-const Event: NextPage<Props> = ({ unixTimestampTarget, config }) => {
+const Event: NextPage<Props> = ({ config }) => {
   return (
     <main>
-      <EventComponent
-        unixTimestampTarget={unixTimestampTarget}
-        config={config}
-      />
+      <EventComponent config={config} />
     </main>
   );
 };
@@ -24,22 +22,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => {
   return {
     props: {
-      unixTimestampTarget: getUnixTime(new Date()) + 120, // 18000,
-      config: {
-        background: {
-          type: 'color',
-          color: '#ffd54f',
-        },
-        countdown: {
-          type: 'default',
-          color: '#333',
-        },
-        onTarget: {
-          type: 'text',
-          text: 'Liftoff',
-          color: '#333',
-        },
-      },
+      config: mellowYellow(getUnixTime(new Date()) + 10, '🚀 Liftoff 🚀'),
     },
   };
 };

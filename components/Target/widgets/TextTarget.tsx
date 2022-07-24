@@ -10,7 +10,9 @@ type Props = {
 export const TextTarget: FC<Props> = ({ text, color }) => {
   return (
     <Content>
-      <Text color={color}>{text}</Text>
+      <Text color={color} fontSize="4xl">
+        {text}
+      </Text>
     </Content>
   );
 };

@@ -7,5 +7,10 @@ export default { component: Countdown } as Meta;
 type Story = StoryObj<ComponentProps<typeof Countdown>>;
 
 export const In3Minutes: Story = {
-  args: { secondsUntil: 180 },
+  args: {
+    secondsUntil: 180,
+    config: {
+      type: 'default',
+    },
+  },
 };

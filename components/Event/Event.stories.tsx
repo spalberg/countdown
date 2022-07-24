@@ -8,8 +8,8 @@ type Story = ComponentStoryObj<typeof Event>;
 
 export const In3Minutes: Story = {
   args: {
-    unixTimestampTarget: getUnixTime(addMinutes(new Date(), 3)),
     config: {
+      target: getUnixTime(addMinutes(new Date(), 3)),
       background: {
         type: 'color',
         color: '#ffd54f',

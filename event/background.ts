@@ -1,38 +1,44 @@
-type BackgroundConfigBase<Type extends string, Config extends {}> = {
-  type: Type;
-} & Config;
+import { z } from 'zod';
 
-export type ColorBackgroundConfig = BackgroundConfigBase<
-  'color',
-  { color: string }
->;
+export const ColorBackgroundSchema = z.object({
+  type: z.literal('color'),
+  color: z.string(),
+});
 
-export type GradientBackgroundConfig = BackgroundConfigBase<
-  'gradient',
-  { gradient: string }
->;
+export const GradientBackgroundSchema = z.object({
+  type: z.literal('gradient'),
+  gradient: z.string(),
+});
 
-export type ImageBackgroundConfig = BackgroundConfigBase<
-  'image',
-  { image: string }
->;
+export const ImageBackgroundSchema = z.object({
+  type: z.literal('image'),
+  src: z.string(),
+});
 
-export type VideoBackgroundConfig = BackgroundConfigBase<
-  'video',
-  { video: string }
->;
+export const VideoBackgroundSchema = z.object({
+  type: z.literal('video'),
+  src: z.string(),
+});
 
-export type SnowfallBackgroundConfig = BackgroundConfigBase<
-  'snowfall',
-  {} // TODO config for snowfall, config for backgrounds, subset?
->;
+const nonRecursiveBackgrounds = [
+  ColorBackgroundSchema,
+  GradientBackgroundSchema,
+  ImageBackgroundSchema,
+  VideoBackgroundSchema,
+] as const;
 
-export type FireworksBackgroundConfig = BackgroundConfigBase<'fireworks', {}>; // TODO config for fireworks, config for backgrounds, subset?
+export const SnowfallBackgroundSchema = z.object({
+  type: z.literal('snowfall'),
+  background: z.union(nonRecursiveBackgrounds).nullish(),
+});
 
-export type BackgroundConfig =
-  | ColorBackgroundConfig
-  | GradientBackgroundConfig
-  | ImageBackgroundConfig
-  | VideoBackgroundConfig
-  | SnowfallBackgroundConfig
-  | FireworksBackgroundConfig;
+export const FireworksBackgroundSchema = z.object({
+  type: z.literal('fireworks'),
+  background: z.union(nonRecursiveBackgrounds).nullish(),
+});
+
+export const BackgroundSchema = z.union([
+  ...nonRecursiveBackgrounds,
+  SnowfallBackgroundSchema,
+  FireworksBackgroundSchema
+]);

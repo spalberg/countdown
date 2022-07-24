@@ -1,4 +1,5 @@
-import { type BackgroundConfig } from 'event/background';
+import { z } from 'zod';
+import { BackgroundSchema } from 'event/background';
 import { type FC } from 'react';
 import {
   ColorBackground,
@@ -7,7 +8,7 @@ import {
 } from './widgets';
 
 type Props = {
-  config: BackgroundConfig;
+  config: z.infer<typeof BackgroundSchema>;
 };
 
 export const Background: FC<Props> = ({ config }) => {

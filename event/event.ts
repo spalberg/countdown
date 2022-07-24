@@ -1,9 +1,11 @@
-import { type BackgroundConfig } from './background';
-import { type CountdownConfig } from './countdown';
-import { type OnTargetConfig } from './onTarget';
+import { z } from 'zod';
+import { BackgroundSchema } from './background';
+import { CountdownSchema } from './countdown';
+import { OnTargetSchema } from './onTarget';
 
-export type EventConfig = {
-  background: BackgroundConfig;
-  countdown: CountdownConfig;
-  onTarget: OnTargetConfig;
-};
+export const EventSchema = z.object({
+  background: BackgroundSchema,
+  countdown: CountdownSchema,
+  onTarget: OnTargetSchema,
+  target: z.number(),
+});
